@@ -99,7 +99,11 @@ color: #ccc;
         <ul id="accounts-menu" class="nav nav-list collapse">
             <li ><a href="<?php echo U('User/teacher');?>">教师管理</a></li>
             <li ><a href="<?php echo U('User/student');?>">学生管理</a></li>
+<<<<<<< HEAD
             <li ><a href="<?php echo U('User/tutor');?>">专家组管理</a></li>
+=======
+            <li ><a href="<?php echo U('User/expertsGroup');?>">专家组管理</a></li>
+>>>>>>> vulpeess/master
         </ul>
     </div>
 

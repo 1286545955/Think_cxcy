@@ -5220,5 +5220,9 @@ function HorizontalPositionCache(getElement) {
 	};
 	
 }
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> vulpeess/master
 })(jQuery);

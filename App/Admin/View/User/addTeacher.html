@@ -1,0 +1,87 @@
+<extend name="Base/common" />
+
+<block name="body">
+
+<div class="btn-toolbar">
+    <button  class="btn btn-primary" onclick = "submitpost()"><i class="icon-save"></i> {:L('save')}</button>
+    <a href="{:U('User/teacher')}"  class="btn">{:L('cancel')}</a>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+
+    <div id="myTabContent" class="tab-content">
+
+    <form id="tab" <if condition="$ope eq 'add'"> action="{:U('User/insertTeacher')}" <else/> action="{:U('user/updateTeacher')}"</if>  method="post" >
+        <input type="hidden" name="id" value="{$data.user_id}">
+        <label>{:L('user')}</label>
+        <input type="text" id="user" name="user" value="{$data.user}" class="input-xlarge">
+        <label>{:L('real_name')}</label>
+        <input type="text" id="real_name" name="real_name" value="{$data.real_name}" class="input-xlarge">
+        <label>{:L('college')}</label>
+        <select class="input-xlarge" name="department">
+          <volist name="college" id="vo">
+            <option value="{$vo.d_id}" <if condition="$vo['d_id'] = $data['department']">selected="selected"</if> >{$vo.name}</option>
+            </volist>
+        </select>
+        <label>Email</label>
+        <input type="text" id="email" name="email" value="{$data.email}" class="input-xlarge" data-toggle="tooltip" data-placement="right" title="{:L('email')}{:L('error')}">
+         <label>{:L('phone')}</label>
+        <input type="text" id="phone" name="phone" value="{$data.phone}" class="input-xlarge" data-toggle="tooltip" data-placement="right" title="{:L('phone')}{:L('error')}" onkeypress="return (/[\d.]/.test(String.fromCharCode(event.keyCode)))">
+        <label>{:L('t_title')}</label>
+        <input type="text" id="t_title" name="t_title" value="{$data.t_title}" class="input-xlarge">
+    </form>
+
+  </div>
+
+</div>
+
+<script>
+
+function submitpost(){
+
+  var search_str = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
+  var email_val = $("#email").val();
+  var isMobile=/^(?:13\d|15\d)\d{5}(\d{3}|\*{3})$/;   
+  var isPhone=/^((0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/;
+  var phone_val = $('#phone').val();
+
+    if($('#user').val() == ''){
+      $('#user').focus();
+      return false;
+    }
+    if( $('#real_name').val() == '' ){
+      $('#real_name').focus();
+      return false;
+    }
+    if( $('#email').val() == '' ){
+      $('#email').focus();
+      return false;
+    }
+    if( $('#phone').val() == ''){
+      $('#phone').focus();
+      return false;
+    }
+    if( $('#t_title').val() == ''){
+      $('#t_title').focus();
+      return false;
+    }
+    if(!search_str.test(email_val)){ 
+      $('#email').focus();   
+      $('#email').tooltip();
+      return false;
+    }
+    if(! isMobile.test(phone_val) && !isPhone.test(phone_val)){
+      $('#phone').focus();   
+      $('#phone').tooltip();
+      return false;
+    }
+    $('#tab').submit();
+
+}
+
+</script>
+
+</block>
+
+

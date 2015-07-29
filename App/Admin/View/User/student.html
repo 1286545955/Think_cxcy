@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <extend name="Base/common" />
 
 <block name="body">
@@ -71,3 +72,98 @@
 
 </block>
 
+=======
+<extend name="Base/common" />
+
+<block name="body">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+    <button class="btn btn-primary" onclick="window.location.href='{:U(\'User/add_student\')}' "><i class="icon-plus"></i>{:L('add_user')}</button>
+    <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {:L('college')}<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+  <volist  name="college" id="vo">
+    <li><a href="{$vo.url}">{$vo.name}</a></li>
+    </volist>
+  </ul>
+</div>
+    <button class="btn">Import</button>
+    <a href="#myModal" data-toggle="modal" class="btn">{:L('export')}</a>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>{:L('user')}</th>
+          <th>{:L('real_name')}</th>
+          <th>{:L('major')}</th>
+          <th>{:L('college')}</th>
+          <th>{:L('fail')}</th>
+          <th>{:L('state')}</th>
+          <th style="width: 35px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <volist name="list" id="vo" key="k">
+        <tr>
+          <td>{$k}</td>
+          <td>{$vo.user_id}</td>
+          <td>{$vo.real_name}</td>
+          <td>{$vo.major}</td>
+          <td>{$vo.college}</td>
+          <td>{$vo.fail}</td>
+          <td>{$vo.state}</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal2" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+       </volist>
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <ul>
+        <li><a href="{$page.last_page}">{:L('last_page')}</a></li>
+        <li><a href="#">{$page.current}</a></li>
+        <li><a href="{$page.next_page}">{:L('next_page')}</a></li>
+    </ul>
+</div>
+
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">{:L('confirm_export')}</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>{:L('export_teacher_infomation')}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">{:L('cancel')}</button>
+        <button class="btn btn-danger" data-dismiss="modal">{:L('confirm')}</button>
+    </div>
+</div>
+
+<div class="modal small hide fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">{:L('confirm_delete')}</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>{:L('delete_user_infomation')}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">{:L('cancel')}</button>
+        <button class="btn btn-danger" data-dismiss="modal">{:L('confirm')}</button>
+    </div>
+</div>
+
+</block>
+
+>>>>>>> vulpeess/master

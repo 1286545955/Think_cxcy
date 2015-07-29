@@ -99,7 +99,11 @@ color: #ccc;
         <ul id="accounts-menu" class="nav nav-list collapse">
             <li ><a href="<?php echo U('User/teacher');?>">教师管理</a></li>
             <li ><a href="<?php echo U('User/student');?>">学生管理</a></li>
+<<<<<<< HEAD
             <li ><a href="<?php echo U('User/tutor');?>">专家组管理</a></li>
+=======
+            <li ><a href="<?php echo U('User/expertsGroup');?>">专家组管理</a></li>
+>>>>>>> vulpeess/master
         </ul>
     </div>
 
@@ -119,6 +123,7 @@ color: #ccc;
 
         <div class="container-fluid">
             <div class="row-fluid">
+<<<<<<< HEAD
 
             <div class="row-fluid">
                     
@@ -182,6 +187,95 @@ color: #ccc;
     </div>
 </div>
 
+=======
+
+                    
+<div class="btn-toolbar">
+    <button class="btn btn-primary" onclick="window.location.href='<?php echo U('User/addTeacher');?>' "><i class="icon-plus"></i><?php echo L('add_user');?></button>
+<!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <?php echo L('college');?><span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+  <?php if(is_array($college)): $i = 0; $__LIST__ = $college;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href="<?php echo ($vo["url"]); ?>"><?php echo ($vo["name"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+  </ul>
+</div>
+    <button class="btn" onclick = "window.location.href='<?php echo U('User/import_teacher');?>"><?php echo L('import');?></button>
+    <a href="#myModal" data-toggle="modal" class="btn"><?php echo L('export');?></a>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><?php echo L('user');?></th>
+          <th><?php echo L('real_name');?></th>
+          <th><?php echo L('t_title');?></th>
+          <th><?php echo L('college');?></th>
+          <th><?php echo L('project_failed');?></th>
+          <th><?php echo L('state');?></th>
+          <th style="width: 26px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php if(is_array($list)): $k = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$list): $mod = ($k % 2 );++$k;?><tr>
+          <td><?php echo ($k); ?></td>
+          <td><?php echo ($list["user_id"]); ?></td>
+          <td><?php echo ($list["real_name"]); ?></td>
+          <td><?php echo ($list["t_title"]); ?></td>
+          <td><?php echo ($list["college"]); ?></td>
+          <td><?php echo ($list["blacklist"]); ?></td>
+          <td><?php echo ($list["state"]); ?></td>
+          <td>
+              <a href="<?php echo U('User/addTeacher' , array('ope' => 'edit','user_id' => $list['user_id']));?>"><i class="icon-pencil"></i></a>
+              <a href="#myModal2" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <ul>
+        <li><a href="<?php echo ($page["last_page"]); ?>"><?php echo L('last_page');?></a></li>
+        <li><a href="#"><?php echo ($page['current']); ?></a></li>
+        <li><a href="<?php echo ($page["next_page"]); ?>"><?php echo L('next_page');?></a></li>
+    </ul>
+</div>
+
+
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><?php echo L('confirm_export');?></h3>
+  </div>
+  <div class="modal-body">
+    
+    <p class="error-text"><i class="icon-warning-sign modal-icon"></i><?php echo L('export_teacher_infomation');?></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true"><?php echo L('cancel');?></button>
+    <button class="btn btn-danger" data-dismiss="modal"><?php echo L('confirm');?></button>
+  </div>
+</div>
+
+<div class="modal small hide fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel"><?php echo L('confirm_delete');?></h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i><?php echo L('delete_user_infomation');?></p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><?php echo L('cancel');?></button>
+        <button class="btn btn-danger" data-dismiss="modal"><?php echo L('confirm');?></button>
+    </div>
+</div>
+
+>>>>>>> vulpeess/master
 
      
     <footer>
